@@ -1,11 +1,24 @@
 import React, { useState, useEffect } from 'react'
-import images from '../img/images'
+import useSound from 'use-sound'
+import images from '../utils/img/images'
+import correct from '../utils/sound/correct.mp3'
+import wrong from '../utils/sound/wrong.mp3'
 
 function Board() {
     const [open, setOpen] = useState([]);
     const [goodGuess, setGoodGuess] = useState([]);
 
     const imagePairs = [...images, ...images];
+
+    const [correctFlip] = useSound(
+        correct, 
+        { volume: 0.2 }
+    );
+
+    const [wrongFlip] = useSound(
+        wrong,
+        { volume: 0.2 }
+    );
 
     function handleChange (index) {
         setOpen((opened) => [...opened, index])
@@ -18,7 +31,11 @@ function Board() {
         const secondCard = imagePairs[open[1]];
 
         if (secondCard && firstCard.id === secondCard.id) {
-            setGoodGuess([...goodGuess, firstCard.id])
+            setGoodGuess([...goodGuess, firstCard.id], correctFlip())
+        }
+
+        if (secondCard && firstCard.id !== secondCard.id) {
+            setTimeout(() => wrongFlip(), 400)
         }
 
         if (open.length === 2) {
@@ -29,14 +46,13 @@ function Board() {
     return (
         <div className='board'>
             {imagePairs.map((image, index) => {
-
                 let isFlipped = false;
 
                 if (open.includes(index)) {
                     isFlipped = true
                 };
                 if(goodGuess.includes(image.id)) {
-                    isFlipped = true
+                    isFlipped = true;
                 };
 
                 return (
