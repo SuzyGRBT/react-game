@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import useSound from 'use-sound'
 import images from '../utils/img/images'
 import correct from '../utils/sound/correct.mp3'
@@ -8,20 +8,25 @@ function Board() {
     const [open, setOpen] = useState([]);
     const [goodGuess, setGoodGuess] = useState([]);
 
-    const imagePairs = [...images, ...images];
-
+    const imagePairsList = [...images, ...images];
+    const imagePairs = useMemo(() => shuffle(imagePairsList), [images])
+    
     const [correctFlip] = useSound(
         correct, 
         { volume: 0.2 }
-    );
-
+        );
+        
     const [wrongFlip] = useSound(
         wrong,
         { volume: 0.2 }
     );
-
+    
     function handleChange (index) {
         setOpen((opened) => [...opened, index])
+    }
+
+    function shuffle(array) {
+         return array.sort(() => 0.5 - Math.random())
     }
 
     useEffect(() => {
