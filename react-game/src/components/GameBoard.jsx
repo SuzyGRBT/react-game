@@ -4,10 +4,10 @@ import images from '../utils/img/images'
 import correct from '../utils/sound/correct.mp3'
 import wrong from '../utils/sound/wrong.mp3'
 
-function Board() {
+function Board({counter, setCounter}) {
     const [open, setOpen] = useState([]);
     const [goodGuess, setGoodGuess] = useState([]);
-
+        
     const imagePairsList = [...images, ...images];
     const imagePairs = useMemo(() => shuffle(imagePairsList), [images])
     
@@ -20,7 +20,7 @@ function Board() {
         wrong,
         { volume: 0.2 }
     );
-    
+   
     function handleChange (index) {
         setOpen((opened) => [...opened, index])
     }
@@ -44,7 +44,10 @@ function Board() {
         }
 
         if (open.length === 2) {
-            setTimeout(() => setOpen([]), 1000)
+            setTimeout(() => {
+                setOpen([])
+                setCounter(counter + 1)
+            }, 1000)
         }
     }, [open]);
 

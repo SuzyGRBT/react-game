@@ -22,7 +22,7 @@ code {
 .header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 100%;
   background: #daebe8;
 }
