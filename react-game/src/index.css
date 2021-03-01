@@ -35,11 +35,11 @@ code {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.site-layout {
+.site-layout.ant-layout-content {
   display: flex;
   justify-content: center;
   width: 100%;
-  min-height: 87vh;
+  min-height: 85vh;
 }
 
 .footer {
@@ -49,16 +49,25 @@ code {
   width: 100%;
 }
 
-.board {
-  margin: 2rem 0;
+.board{
+  margin: 1rem 0;
+  height: 100%;
+}
+
+.gameBoard {
+  margin: 1rem 0;
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(4, 1fr);
   gap: 20px;
 }
 
+.buttonGame {
+  display: flex;
+}
+
 .card {
-  height: 230px;
-  width: 230px;
+  height: 220px;
+  width: 220px;
   border-radius: 5px;
   border: none;
   cursor: pointer;

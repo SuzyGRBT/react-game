@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Board from './GameBoard'
-import { Layout, Switch, Button } from 'antd';
+import { Layout, Switch, Modal } from 'antd';
 import "antd/dist/antd.css";
 import { AudioMutedOutlined, AudioOutlined } from '@ant-design/icons';
 import logo from '../utils/img/rs_school_js.svg';
@@ -16,7 +16,6 @@ const Wrapper = () => {
       <Header className="header" style={{background: '#daebe8'}}>
         <h1>Memory Game</h1>
         <h3>Counter: {counter} </h3>
-        <Button type="primary" onClick={() => console.log('click')}>New Game</Button>
         <Switch
           checkedChildren={<AudioOutlined />}
           unCheckedChildren={<AudioMutedOutlined />}
