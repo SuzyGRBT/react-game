@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Board from './GameBoard'
-import { Layout, Switch, Modal } from 'antd';
+import { Layout, Switch } from 'antd';
 import "antd/dist/antd.css";
 import { AudioMutedOutlined, AudioOutlined } from '@ant-design/icons';
 import logo from '../utils/img/rs_school_js.svg';
