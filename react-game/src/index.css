@@ -120,3 +120,24 @@ code {
   color: #fff;
   transform: scale(1.02);
 }
+
+@media screen and (max-width: 970px) {
+  .gameBoard {
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(3, 1fr);
+  } 
+}
+
+@media screen and (max-width: 730px) {
+  .gameBoard {
+    display: grid;
+    grid-template: repeat(6, 1fr) / repeat(2, 1fr);
+  } 
+}
+
+@media screen and (max-width: 490px) {
+  .gameBoard {
+    display: grid;
+    grid-template: repeat(12, 1fr) / repeat(1, 1fr);
+  } 
+}
